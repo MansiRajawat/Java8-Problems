@@ -26,6 +26,17 @@ public class EmployeeJava8Questions {
                 employeesWithMaxSalaryInEachDept = maximumSalariesInEachDepartment(employees);
         System.out.println(employeesWithMaxSalaryInEachDept);
 
+        //sort the employees based on the salary.
+
+        List<Employee> sortEmpBasedOnSalary=  sortEmployeesBasedOnSalaries(employees);
+        System.out.println(sortEmpBasedOnSalary);
+
+    }
+
+    private static List<Employee> sortEmployeesBasedOnSalaries(List<Employee> employees) {
+      return  employees.stream().sorted(Comparator.comparing(Employee:: getSalary, Comparator.reverseOrder()))
+                .collect(Collectors.toList());
+
     }
 
     private static Map<String, Optional<Employee>> maximumSalariesInEachDepartment(List<Employee> employees) {
