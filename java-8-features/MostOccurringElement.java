@@ -14,6 +14,9 @@ public class MostOccurringElement {
 // based on the value count more than 1 or the maximum occurrence of the value in hashmap.
         System.out.println( mostFrequent.getKey());
 
+        System.out.println("maximum occurrence of the work -> "+ words.stream().collect(Collectors.groupingBy(w -> w, Collectors.counting()))
+                .entrySet().stream().max(Map.Entry.comparingByValue()));
+
 
     }
 }

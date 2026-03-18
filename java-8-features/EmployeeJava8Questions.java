@@ -46,16 +46,16 @@ public class EmployeeJava8Questions {
     }
 
     private static Map<String, List<Employee>> groupEmployeesByDeparments(List<Employee> employees) {
-       return employees.stream().collect(Collectors.groupingBy(i -> i.getDepartment()));
+       return employees.stream().collect(Collectors.groupingBy( Employee::getDepartment));
     }
 
     private static double  findAverageSalaries(List<Employee> employees) {
-       return employees.stream().mapToDouble(i -> i.getSalary()).average().orElse(0.0);
+       return employees.stream().mapToDouble(Employee::getSalary).average().orElse(0.0);
     }
 
     private static List<Employee> filterEmployees(List<Employee> employees) {
        return employees.stream()
-               .filter(e -> "IT".equals(e.getDepartment()) && e.getSalary() > 50000)
+               .filter(e -> "IT".equals(e.getDepartment()) && e.getSalary() >= 50000)
                .collect(Collectors.toList());
     }
 }
